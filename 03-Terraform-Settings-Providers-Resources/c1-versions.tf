@@ -18,7 +18,7 @@ terraform {
 
 provider "aws" {
 
-    region = "us_east_1"
+    region = "us-east-1"
 
     //profile = "default"  we have already configured the aws cli defualt profile it will take from this if we are using other profile, but now I am just using the default profile so i can leave it.
     
