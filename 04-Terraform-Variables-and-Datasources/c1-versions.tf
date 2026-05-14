@@ -7,7 +7,7 @@ terraform {
     aws = {
        # goto https://registry.terraform.io/providers/hashicorp/aws/latest and copy the source and versions 
        source  = "hashicorp/aws"
-       version = "~> 6.0"
+       version = "6.44.0"
     }
 
   }
