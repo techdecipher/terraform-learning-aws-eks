@@ -1,0 +1,58 @@
+2026-05-14T13:13:46.433+0530 [INFO]  Terraform version: 1.15.1
+2026-05-14T13:13:46.434+0530 [DEBUG] using github.com/hashicorp/go-tfe v1.94.0
+2026-05-14T13:13:46.434+0530 [DEBUG] using github.com/hashicorp/hcl/v2 v2.24.0
+2026-05-14T13:13:46.434+0530 [DEBUG] using github.com/hashicorp/terraform-svchost v0.2.1
+2026-05-14T13:13:46.434+0530 [DEBUG] using github.com/zclconf/go-cty v1.18.0
+2026-05-14T13:13:46.434+0530 [INFO]  Go runtime version: go1.25.8
+2026-05-14T13:13:46.434+0530 [INFO]  CLI args: []string{"C:\\Terraform\\terraform.exe", "init"}
+2026-05-14T13:13:46.434+0530 [TRACE] Stdout is not a terminal
+2026-05-14T13:13:46.434+0530 [TRACE] Stderr is not a terminal
+2026-05-14T13:13:46.434+0530 [TRACE] Stdin is a terminal
+2026-05-14T13:13:46.437+0530 [DEBUG] Attempting to open CLI config file: C:\Users\Pranav\AppData\Roaming\terraform.rc
+2026-05-14T13:13:46.437+0530 [INFO]  Loading CLI configuration from C:\Users\Pranav\AppData\Roaming\terraform.rc
+2026-05-14T13:13:46.437+0530 [DEBUG] ignoring non-existing provider search directory terraform.d/plugins
+2026-05-14T13:13:46.438+0530 [DEBUG] ignoring non-existing provider search directory C:\Users\Pranav\AppData\Roaming\terraform.d\plugins
+2026-05-14T13:13:46.438+0530 [DEBUG] ignoring non-existing provider search directory C:\Users\Pranav\AppData\Roaming\HashiCorp\Terraform\plugins
+2026-05-14T13:13:46.438+0530 [INFO]  CLI command args: []string{"init"}
+2026-05-14T13:13:46.443+0530 [TRACE] terraform.NewContext: starting
+2026-05-14T13:13:46.443+0530 [TRACE] terraform.NewContext: complete
+2026-05-14T13:13:46.443+0530 [TRACE] building graph for terraform dependencies
+2026-05-14T13:13:46.443+0530 [TRACE] Executing graph transform *terraform.RootVariableTransformer
+2026-05-14T13:13:46.443+0530 [TRACE] Executing graph transform *terraform.ModuleTransformer
+2026-05-14T13:13:46.443+0530 [TRACE] Executing graph transform *terraform.LocalTransformer
+2026-05-14T13:13:46.443+0530 [TRACE] Executing graph transform *terraform.ReferenceTransformer
+2026-05-14T13:13:46.443+0530 [DEBUG] ReferenceTransformer: "var.aws_region" references: []
+2026-05-14T13:13:46.443+0530 [DEBUG] ReferenceTransformer: "var.instance_type" references: []
+2026-05-14T13:13:46.443+0530 [DEBUG] ReferenceTransformer: "var.instance_keypair" references: []
+2026-05-14T13:13:46.443+0530 [TRACE] Executing graph transform *terraform.TransformFilter
+2026-05-14T13:13:46.443+0530 [TRACE] Executing graph transform *terraform.variableValidationTransformer
+2026-05-14T13:13:46.443+0530 [TRACE] variableValidationTransformer: adding validation nodes for any existing variable evaluation nodes
+2026-05-14T13:13:46.443+0530 [TRACE] Executing graph transform *terraform.RootTransformer
+2026-05-14T13:13:46.443+0530 [TRACE] Executing graph transform *terraform.TransitiveReductionTransformer
+2026-05-14T13:13:46.443+0530 [TRACE] Completed graph transform:
+root - terraform.graphNodeRoot
+  ------
+2026-05-14T13:13:46.443+0530 [DEBUG] Starting graph walk: walkInit
+2026-05-14T13:13:46.443+0530 [TRACE] vertex "root": starting visit (terraform.graphNodeRoot)
+2026-05-14T13:13:46.443+0530 [TRACE] vertex "root": does not belong to any module instance
+2026-05-14T13:13:46.443+0530 [TRACE] vertex "root": visit complete
+[0m[1mInitializing provider plugins found in the configuration...[0m
+- Finding hashicorp/aws versions matching "6.44.0"...
+2026-05-14T13:13:46.443+0530 [DEBUG] Service discovery for registry.terraform.io at https://registry.terraform.io/.well-known/terraform.json
+2026-05-14T13:13:46.779+0530 [DEBUG] GET https://registry.terraform.io/v1/providers/hashicorp/aws/versions
+2026-05-14T13:13:46.779+0530 [TRACE] HTTP client GET request to https://registry.terraform.io/v1/providers/hashicorp/aws/versions
+2026-05-14T13:13:47.012+0530 [TRACE] providercache.fillMetaCache: scanning directory .terraform\providers
+2026-05-14T13:13:47.012+0530 [TRACE] getproviders.SearchLocalDirectory: failed to resolve symlinks for .terraform\providers: GetFileAttributesEx .terraform: The system cannot find the file specified.
+2026-05-14T13:13:47.012+0530 [TRACE] providercache.fillMetaCache: error while scanning directory .terraform\providers: cannot search .terraform\providers: GetFileAttributesEx .terraform\providers: The system cannot find the path specified.
+2026-05-14T13:13:47.012+0530 [TRACE] providercache.fillMetaCache: scanning directory C:/Users/Pranav/.terraform.d/plugin-cache
+2026-05-14T13:13:47.012+0530 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/aws v6.44.0 for windows_amd64 at C:\Users\Pranav\.terraform.d\plugin-cache\registry.terraform.io\hashicorp\aws\6.44.0\windows_amd64
+2026-05-14T13:13:47.012+0530 [TRACE] providercache.fillMetaCache: including C:\Users\Pranav\.terraform.d\plugin-cache\registry.terraform.io\hashicorp\aws\6.44.0\windows_amd64 as a candidate package for registry.terraform.io/hashicorp/aws 6.44.0
+2026-05-14T13:13:47.012+0530 [DEBUG] GET https://registry.terraform.io/v1/providers/hashicorp/aws/6.44.0/download/windows/amd64
+2026-05-14T13:13:47.012+0530 [TRACE] HTTP client GET request to https://registry.terraform.io/v1/providers/hashicorp/aws/6.44.0/download/windows/amd64
+2026-05-14T13:13:47.191+0530 [DEBUG] GET https://releases.hashicorp.com/terraform-provider-aws/6.44.0/terraform-provider-aws_6.44.0_SHA256SUMS
+2026-05-14T13:13:47.191+0530 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-aws/6.44.0/terraform-provider-aws_6.44.0_SHA256SUMS
+2026-05-14T13:13:47.912+0530 [DEBUG] GET https://releases.hashicorp.com/terraform-provider-aws/6.44.0/terraform-provider-aws_6.44.0_SHA256SUMS.72D7468F.sig
+2026-05-14T13:13:47.912+0530 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-aws/6.44.0/terraform-provider-aws_6.44.0_SHA256SUMS.72D7468F.sig
+- Installing hashicorp/aws v6.44.0...
+2026-05-14T13:13:47.988+0530 [TRACE] providercache.Dir.InstallPackage: installing registry.terraform.io/hashicorp/aws v6.44.0 from https://releases.hashicorp.com/terraform-provider-aws/6.44.0/terraform-provider-aws_6.44.0_windows_amd64.zip
+2026-05-14T13:13:47.989+0530 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-aws/6.44.0/terraform-provider-aws_6.44.0_windows_amd64.zip
