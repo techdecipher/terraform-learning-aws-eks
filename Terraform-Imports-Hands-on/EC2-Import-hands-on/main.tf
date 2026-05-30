@@ -17,6 +17,21 @@ resource "aws_instance" "my_ec2_instance" {
 //EC2 instance empty resource block created via Console and I am trying to import it 
 
 resource "aws_instance" "ec2_manual" {
-
+    ami                                  = "ami-091138d0f0d41ff90"
+    availability_zone                    = "us-east-1c"
+    instance_type                        = "t3.micro"
+    key_name                             = "common"
+   
+    security_groups                      = [
+        "EC2-SG",
+    ]
+    
+    subnet_id                            = "subnet-0856e57739674998b"
+    tags                                 = {
+        "Name" = "EC2 Created From Console "
+    }
+    tags_all                             = {
+        "Name" = "EC2 Created From Console "
+    }
 
 }
