@@ -1,14 +1,4 @@
 
-#get the list of azs for for each to use 
-
-data "aws_availability_zones" "my_azs" {
-  filter {
-    name   = "opt-in-status"
-    values = ["opt-in-not-required"]
-  }
-}
-
-
 #resource block EC2 instance
 
 
@@ -25,8 +15,14 @@ resource "aws_instance" "my_ec2_instance" {
  user_data = file("${path.module}/web_app.sh")
  key_name = var.instance_keypair  //key name put into variables
  vpc_security_group_ids = [ aws_security_group.vpc_ssh.id, aws_security_group.vpc_web.id ] // has to be like that for multiple sg groups
- #count = 2
- for_each = toset(data.aws_availability_zones.my_azs.names) #convert the data value from list using toset as for each does not accept list it accepts either map or list of strings
+
+ #for_each = toset(data.aws_availability_zones.my_azs.names) #convert the data value from list using toset as for each does not accept list it accepts either map or list of strings
+ for_each = toset(keys({
+    for az,details in data.aws_ec2_instance_type_offerings.my_instance_type: az => details.instance_types
+    if length(details.instance_types) != 0  
+  
+}))
+ 
  availability_zone = each.key
  
  

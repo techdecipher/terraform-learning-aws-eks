@@ -10,18 +10,6 @@ variable "aws_region" {
   
 }
 
-/*
-# ec2 instance type
-
-variable "instance_type" {
-
-  description = "EC2 instance type"
-  type = string
-  default = "t3.micro"
-  
-}
-*/
-
 # instance key pair
 
 variable "instance_keypair" {
