@@ -12,3 +12,11 @@ resource "aws_instance" "my_ec2_instance" {
  }
 
 }
+
+
+//EC2 instance empty resource block created via Console and I am trying to import it 
+
+resource "aws_instance" "ec2_manual" {
+
+
+}
