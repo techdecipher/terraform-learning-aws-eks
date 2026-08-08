@@ -10,20 +10,21 @@ module "eks" {
   authentication_mode                      = "API_AND_CONFIG_MAP"
   enable_cluster_creator_admin_permissions = true
 
-  addons = {
-    coredns = {
-      most_recent = true
-    }
 
-    kube-proxy = {
-      most_recent = true
-    }
-
-    vpc-cni = {
-      most_recent = true
-    }
+addons = {
+  coredns = {
+    most_recent = true
   }
 
+  kube-proxy = {
+    most_recent = true
+  }
+
+  vpc-cni = {
+    most_recent    = true
+    before_compute = true
+  }
+}
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets
 
