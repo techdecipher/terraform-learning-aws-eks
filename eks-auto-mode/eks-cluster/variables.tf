@@ -8,3 +8,9 @@ variable "cluster_name" {
   type        = string
   default     = "eks-classic"
 }
+
+variable "vpc_cidr" {
+  description = "CIDR block for the EKS VPC"
+  type        = string
+  default     = "10.0.0.0/16"
+}
