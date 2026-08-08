@@ -32,18 +32,3 @@ spec:
             limits:
               cpu: "200m"
               memory: "128Mi"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: nginx-demo
-
-spec:
-  type: ClusterIP
-
-  selector:
-    app: nginx-demo
-
-  ports:
-    - port: 80
-      targetPort: 80
