@@ -1,0 +1,27 @@
+Personal AWS Account
+        │
+        ▼
+     Terraform
+        │
+        ├── VPC
+        │    ├── Public Subnets
+        │    └── Private Subnets
+        │
+        ▼
+ Traditional EKS
+        │
+        └── Managed Node Group
+                 │
+                 ▼
+              EC2 Nodes
+                 │
+                 ▼
+          Sample Application
+
+                 ↓
+          MIGRATION LATER
+
+            EKS Auto Mode
+                 │
+                 ▼
+       Auto-managed compute
