@@ -10,7 +10,9 @@ module "eks" {
   authentication_mode                      = "API_AND_CONFIG_MAP"
   enable_cluster_creator_admin_permissions = true
 
-
+iam_role_additional_policies = {
+  AmazonEKSBlockStoragePolicyV2 = "arn:aws:iam::aws:policy/AmazonEKSBlockStoragePolicyV2"
+}
 addons = {
   coredns = {
     most_recent = true
@@ -43,7 +45,7 @@ addons = {
 
   // EKS auto mode change 1 for eks auto mode 
   // EKS supports compute_config for Auto Mode which supports the built-in NodePools
-  
+
 
   compute_config = {
   enabled = true
