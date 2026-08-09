@@ -27,3 +27,8 @@ output "cluster_version" {
   description = "EKS Kubernetes version"
   value       = module.eks.cluster_version
 }
+
+output "aws_load_balancer_controller_role_arn" {
+  description = "IAM role used by AWS Load Balancer Controller through IRSA"
+  value       = module.aws_load_balancer_controller_irsa.arn
+}

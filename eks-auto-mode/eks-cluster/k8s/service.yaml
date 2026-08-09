@@ -4,7 +4,7 @@ metadata:
   name: nginx-demo
 
 spec:
-  type: LoadBalancer
+  type: ClusterIP
 
   selector:
     app: nginx-demo
