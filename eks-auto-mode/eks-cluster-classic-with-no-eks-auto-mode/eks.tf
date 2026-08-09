@@ -39,18 +39,4 @@ addons = {
       capacity_type = "ON_DEMAND"
     }
   }
-
-
-  // EKS auto mode change 1 for eks auto mode 
-  // EKS supports compute_config for Auto Mode which supports the built-in NodePools
-  
-
-  compute_config = {
-  enabled = true
-
-  node_pools = [
-    "system",
-    "general-purpose"
-  ]
-}
 }
