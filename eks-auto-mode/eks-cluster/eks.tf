@@ -13,6 +13,11 @@ module "eks" {
 iam_role_additional_policies = {
   AmazonEKSBlockStoragePolicyV2 = "arn:aws:iam::aws:policy/AmazonEKSBlockStoragePolicyV2"
 }
+
+/*
+Now that there are no non-Auto Mode nodes, AWS explicitly says the traditional CoreDNS Deployment can also be removed; 
+Auto Mode nodes provide CoreDNS as a system service on each node
+
 addons = {
   coredns = {
     most_recent = true
@@ -29,6 +34,8 @@ addons = {
 }
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets
+
+*/
 
 /*
 remove this for deleting the node groups and using the compute_config for eks auto mode
