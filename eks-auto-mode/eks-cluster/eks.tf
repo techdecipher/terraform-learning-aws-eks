@@ -14,26 +14,29 @@ iam_role_additional_policies = {
   AmazonEKSBlockStoragePolicyV2 = "arn:aws:iam::aws:policy/AmazonEKSBlockStoragePolicyV2"
 }
 
-/*
-Now that there are no non-Auto Mode nodes, AWS explicitly says the traditional CoreDNS Deployment can also be removed; 
-Auto Mode nodes provide CoreDNS as a system service on each node
+
+//Now that there are no non-Auto Mode nodes, AWS explicitly says the traditional CoreDNS Deployment can also be removed; 
+//Auto Mode nodes provide CoreDNS as a system service on each node
 
 addons = {
   coredns = {
     most_recent = true
+    preserve    = false
   }
 
   kube-proxy = {
     most_recent = true
+    preserve    = false
   }
 
   vpc-cni = {
     most_recent    = true
     before_compute = true
+    preserve    = false
   }
 }
 
-*/
+
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets
 
