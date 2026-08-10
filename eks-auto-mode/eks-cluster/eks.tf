@@ -30,6 +30,8 @@ addons = {
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets
 
+/*
+remove this for deleting the node groups and using the compute_config for eks auto mode
   eks_managed_node_groups = {
     general = {
       instance_types = ["t3.medium"]
@@ -40,7 +42,8 @@ addons = {
 
       capacity_type = "ON_DEMAND"
     }
-  }
+
+    */
 
 
   // EKS auto mode change 1 for eks auto mode 
