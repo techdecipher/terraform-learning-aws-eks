@@ -17,6 +17,13 @@ spec:
         app: nginx-demo
 
     spec:
+
+      #Auto Mode provisions capacity based on workload demand, and Auto Mode nodes carry 
+      #the label eks.amazonaws.com/compute-type=auto.
+      #AWS documents this label specifically for controlling whether a workload runs on EKS Auto Mode nodes.
+      nodeSelector:
+        eks.amazonaws.com/compute-type: auto
+
       containers:
         - name: nginx
           image: nginx:alpine
