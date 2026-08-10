@@ -32,10 +32,12 @@ addons = {
     before_compute = true
   }
 }
+
+*/
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets
 
-*/
+
 
 /*
 remove this for deleting the node groups and using the compute_config for eks auto mode
