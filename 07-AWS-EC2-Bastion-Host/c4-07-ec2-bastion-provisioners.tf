@@ -1,34 +1,31 @@
 
-#resource block EC2 instance
-
-
-resource "aws_instance" "my_ec2_instance" {
- ami = data.aws_ami.amazon_linux_3.id //dynamically put it since we have data source block in c4-ami-datasource
- 
- #instance_type = var.instance_type
-
- #using instance type list from variables
- #instance_type = var.instance_type_list[1] #1 is nothing but the the values at 1st number in list
- 
- #using instance type maps from variables
- instance_type = var.instance_type_map["qa"] #for specific envs map
- user_data = file("${path.module}/web_app.sh")
- key_name = var.instance_keypair  //key name put into variables
- vpc_security_group_ids = [ aws_security_group.vpc_ssh.id, aws_security_group.vpc_web.id ] // has to be like that for multiple sg groups
-
- #for_each = toset(data.aws_availability_zones.my_azs.names) #convert the data value from list using toset as for each does not accept list it accepts either map or list of strings
- for_each = toset(keys({
-    for az,details in data.aws_ec2_instance_type_offerings.my_instance_type: az => details.instance_types
-    if length(details.instance_types) != 0  
+# null resource to connect to the bastion host basically establishing a connection to the bastion host 
+resource "null_resource" "copy_ec2_key" {
+  depends_on = [module.ec2-instance] // to ensure that the EC2 instance is created before copying the key
+  connection {
+    type        = "ssh"
+    host        = aws_eip.bastion_eip.public_ip
+    user        = "ec2-user"
+    password = ""
+    private_key = file(private_key/terraform-aws-ec2-bastion.pem)
   
-}))
- 
- availability_zone = each.key
- 
- 
- 
- tags = {
-   "Name" = "Dummy Ec2-${each.key}"
- }
+}
+
+#file provisioner to copy the private key to the bastion host post connection is stablished
+provisioner "file" {
+    source      = "private_key/terraform-aws-ec2-bastion.pem"
+    destination = "/tmp/terraform-aws-ec2-bastion.pem"
+  }
+
+  #remote-exec provisioner to change the permission of the private key file on the bastion host
+provisioner "remote-exec" {
+    inline = [
+      "sudo chmod 400 /tmp/terraform-aws-ec2-bastion.pem",
+      "sudo chown ec2-user:ec2-user /tmp/terraform-aws-ec2-bastion.pem"
+    ]
+  }
+
+  # you can  also add local exec when resource is created or destory that is something you want to do on your
+  #local machine when the resource is created or destroyed. For example, you can add a local exec to run a script that sets up your local environment for connecting to the bastion host.
 
 }
