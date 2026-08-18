@@ -13,7 +13,7 @@
   key_name      = var.instance_key_pair
   #monitoring    = true
   // refer the output of the security group module to get the security group id
-  vpc_security_group_ids = [ module.public_bastion_SG.this_security_group_id ]
+  vpc_security_group_ids = [ module.public_bastion_SG.security_group_id ]
   subnet_id     = module.vpc.public_subnets[0]
 
 
