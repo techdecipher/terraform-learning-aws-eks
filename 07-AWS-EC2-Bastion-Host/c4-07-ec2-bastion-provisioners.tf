@@ -7,21 +7,21 @@ resource "null_resource" "copy_ec2_key" {
     host        = aws_eip.bastion_eip.public_ip
     user        = "ec2-user"
     password = ""
-    private_key = file(private_key/terraform-aws-ec2-bastion.pem)
+    private_key = file(private_key/terraform-common-key.pem)
   
 }
 
 #file provisioner to copy the private key to the bastion host post connection is stablished
 provisioner "file" {
-    source      = "private_key/terraform-aws-ec2-bastion.pem"
-    destination = "/tmp/terraform-aws-ec2-bastion.pem"
+    source      = "private_key/terraform-common-key.pem"
+    destination = "/tmp/terraform-common-key.pem"
   }
 
   #remote-exec provisioner to change the permission of the private key file on the bastion host
 provisioner "remote-exec" {
     inline = [
-      "sudo chmod 400 /tmp/terraform-aws-ec2-bastion.pem",
-      "sudo chown ec2-user:ec2-user /tmp/terraform-aws-ec2-bastion.pem"
+      "sudo chmod 400 /tmp/terraform-common-key.pem",
+      "sudo chown ec2-user:ec2-user /tmp/terraform-common-key.pem"
     ]
   }
 
