@@ -5,7 +5,7 @@ resource "aws_eks_node_group" "eks_node_group_private" {
   node_role_arn   = aws_iam_role.eks_node_group_role.arn
   subnet_ids      = module.vpc.private_subnets
   
-  ami_type = "AL2_x86_64"
+  ami_type = "AL2023_x86_64_STANDARD"
   capacity_type = "ON_DEMAND"
   disk_size = 20
   instance_types = ["t3.medium"]
