@@ -73,6 +73,7 @@ output "node_group_version" {
 
 // node group private outputs
 
+/*
 output "node_group_private_id" {
   description = "EKS private node group ID"
   value       = aws_eks_node_group.eks_node_group_private.id
@@ -92,3 +93,4 @@ output "node_group_private_version" {
   description = "EKS private node group version"
   value       = aws_eks_node_group.eks_node_group_private.version
 }
+*/

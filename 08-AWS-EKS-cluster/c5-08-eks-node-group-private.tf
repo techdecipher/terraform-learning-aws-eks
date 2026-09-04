@@ -1,4 +1,9 @@
 #EKS node group private 
+
+# Commenting this as this is costing a lot of money to run the private node group. 
+#You can uncomment this and run it if you want to create a private node group.
+
+/*
 resource "aws_eks_node_group" "eks_node_group_private" {
   cluster_name    = aws_eks_cluster.eks_cluster.name
   node_group_name = "${var.cluster_name}-private-node-group"
@@ -32,3 +37,4 @@ resource "aws_eks_node_group" "eks_node_group_private" {
     Name = "${var.cluster_name}-private-node-group"
   }
 }
+*/
