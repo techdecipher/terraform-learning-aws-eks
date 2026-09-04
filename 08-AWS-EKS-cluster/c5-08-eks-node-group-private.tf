@@ -1,7 +1,7 @@
 #EKS node group private 
 resource "aws_eks_node_group" "eks_node_group_private" {
   cluster_name    = aws_eks_cluster.eks_cluster.name
-  node_group_name = "{var.cluster_name}-private-node-group"
+  node_group_name = "${var.cluster_name}-private-node-group"
   node_role_arn   = aws_iam_role.eks_node_group_role.arn
   subnet_ids      = module.vpc.private_subnets
   
@@ -29,6 +29,6 @@ resource "aws_eks_node_group" "eks_node_group_private" {
   aws_iam_role_policy_attachment.ec2_container_registry_read_only_policy_attachment ]
 
   tags = {
-    Name = "{var.cluster_name}-private-node-group"
+    Name = "${var.cluster_name}-private-node-group"
   }
 }
