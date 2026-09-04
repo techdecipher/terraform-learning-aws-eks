@@ -17,42 +17,45 @@ module "vpc" {
 name = var.vpc_name
 cidr = var.vpc_cidr_block
 
-  #azs                 = var.vpc_availability_zone
-  azs = data.aws_availability_zones.available.names
-  private_subnets     = var.vpc_private_subnet
-  public_subnets      = var.vpc_public_subnet
 
-  #db subnet 
-  create_database_subnet_group = var.vpc_create_database_subnet_group
-  create_database_subnet_route_table = var.vpc_create_database_subnet_route_table
-  database_subnets    = var.vpc_db_subnet
+azs = data.aws_availability_zones.available.names
+private_subnets     = var.vpc_private_subnet
+public_subnets      = var.vpc_public_subnet
+
+#enable the "auto-assign public IP" setting
+map_public_ip_on_launch = true 
+  
+#db subnet 
+create_database_subnet_group = var.vpc_create_database_subnet_group
+create_database_subnet_route_table = var.vpc_create_database_subnet_route_table
+database_subnets    = var.vpc_db_subnet
 
   
-  #NAT gatway for outbound communication
-  enable_nat_gateway = var.vpc_enable_nat_gateway
-  single_nat_gateway = var.vpc_single_nat_gateway
+#NAT gatway for outbound communication
+enable_nat_gateway = var.vpc_enable_nat_gateway
+single_nat_gateway = var.vpc_single_nat_gateway
 
-  #VPC DNS params
-  enable_dns_hostnames = var.vpc_enable_dns_hostnames
-  enable_dns_support = var.vpc_enable_dns_support
+#VPC DNS params
+enable_dns_hostnames = var.vpc_enable_dns_hostnames
+enable_dns_support = var.vpc_enable_dns_support
 
-  #subet tags
+#subet tags
 
-  public_subnet_tags = {
-    Name = "Public Subnets"
-  }
+public_subnet_tags = {
+  Name = "Public Subnets"
+}
 
-  private_subnet_tags = {
-    Name = "Private Subnets"
-  }
+private_subnet_tags = {
+  Name = "Private Subnets"
+}
 
-  database_subnet_tags = {
-    Name = "Database Subnets"
-  }
+database_subnet_tags = {
+  Name = "Database Subnets"
+}
 
-  #regualr tags
+#regualr tags
 
-  tags = local.common_tags
+tags = local.common_tags
+vpc_tags = local.common_tags
 
-  vpc_tags = local.common_tags
 }
