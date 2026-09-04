@@ -16,7 +16,7 @@ variable "cluster_service_ipv4_cidr" {
 variable "cluster_version" {
     description = "Kubernetes version for the EKS cluster"
     type = string
-    default = "1.27"
+    default = "1.35"
 }
 
 variable "cluster_endpoint_private_access" {
